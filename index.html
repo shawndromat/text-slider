@@ -14,32 +14,17 @@
     <br />
     <br />
     <div class="text-slider">
-      <!-- <div class="subject"><p class="active">I</p></div> -->
-      <div class="verb">
-        <p data-target="#am">I am</p>
-        <p data-target="#love">I love</p>
-        <p data-target="#create">I create with</p>
-      </div>
-      <div class="content" id="am">
-        <p>a web developer</p>
-        <p>a maker</p>
-      </div>
-      <div class="content" id="love">
-        <p>clean code</p>
-        <p>problem solving</p>
-      </div>
-      <div class="content" id="create">
-        <p>ruby</p>
-        <p>javascript</p>
-        <p>rails</p>
-        <p>backbone</p>
-        <p>angular</p>
-      </div>
-    </div>
+      <div class="verb"></div>
+      <div class="predicate"></div>
+    </div><!-- text-slider -->
     <script type="text/javascript" charset="utf-8">
       $(function() {
           $('.text-slider').textSlider({
-            
+              content: {
+              "I am": ["a web developer", "a maker"],
+              "I love": ["clean code", "problem solving"],
+              "I create with": ["ruby", "javascript", "rails", "backbone", "angular"]
+              }
             });
       });
     </script>

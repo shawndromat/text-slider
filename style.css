@@ -19,7 +19,7 @@
   right: 0;
 }
 
-.text-slider .content {
+.text-slider .predicate {
   width: 400px;
 }
 
@@ -28,10 +28,6 @@
   position: absolute;
   top: 0%;
   transition: top 1s ease-in-out, bottom 1s ease-in-out;
-}
-
-.text-slider > div.content:not(.active) {
-  display: none;
 }
 
 .text-slider > div > p:not(.active) {

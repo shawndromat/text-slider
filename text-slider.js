@@ -4,15 +4,14 @@
     this.verbIndex = 0;
     this.predicateIndex = 0;
     this.content = options.content;
-    // this.verbs = this.$el.find('.verb').children();
-    this.findPredicates();
-    this.setUp();
+    this.verbs = this.getVerbs();
+    this.populate();
     this.run();
   }
 
-  $.TextSlider.prototype.setUp = function() {
-    this.verbs.first().addClass('active');
-  }
+  // $.TextSlider.prototype.setUp = function() {
+  //   this.verbs.first().addClass('active');
+  // }
 
   $.TextSlider.prototype.getVerbs = function() {
     var verbs = [];
@@ -25,40 +24,48 @@
   $.TextSlider.prototype.populate = function() {
     this.populateVerbs();
     this.populatePredicates();
+    this.$verbs.children().first().addClass('active');
+    this.$predicates.children().first().addClass('active');
   }
 
   $.TextSlider.prototype.populateVerbs = function() {
-    var verbs = this.content.verbs;
     var $verbs = [];
-    for(var i = 0; i < verbs.length; i++) {
-      var $verb = $('<p></p>').text(verbs[i]);
+    for(var i = 0; i < this.verbs.length; i++) {
+      var $verb = $('<p></p>').text(this.verbs[i]);
       $verbs.push($verb);
     }
-    this.verbs = this.$el.find('.verb').append($verbs);
+    this.$verbs = this.$el.find('.verb').append($verbs);
   }
 
-  $.TextSlider.prototype.populateVerbs = function() {
+  $.TextSlider.prototype.populatePredicates = function() {
+    var $predicates = [];
+    for( var i = 0; i < this.verbs.length; i++) {
+      var preds = this.content[this.verbs[i]];
+      for (var j = 0; j < preds.length; j++) {
+        var $predicate = $('<p></p>').text(preds[j]);
+        $predicates.push($predicate);
+      }
+    }
+    this.$predicates = this.$el.find('.predicate').append($predicates);
   }
 
   $.TextSlider.prototype.run = function() {
     setInterval(this.tick.bind(this), 2000);
   }
 
-  $.TextSlider.prototype.findPredicates = function() {
-    if (this.currPredicates) {
-      this.currPredicates.removeClass('active');
-    }
-    var $verb = this.verbs.eq(this.verbIndex);
-    var id = $verb.data('target');
-    this.currPredicates = this.$el.find(id);
-    this.currPredicates.addClass('active');
-    this.currPredicates.children().first().addClass('active');
-  }
+  // $.TextSlider.prototype.findPredicates = function() {
+  //   if (this.currPredicates) {
+  //     this.currPredicates.removeClass('active');
+  //   }
+  //   var $verb = this.verbs.eq(this.verbIndex);
+  //   var id = $verb.data('target');
+  //   this.currPredicates = this.$el.find(id);
+  //   this.currPredicates.addClass('active');
+  //   this.currPredicates.children().first().addClass('active');
+  // }
 
   $.TextSlider.prototype.tick = function() {
-    console.log(this.currPredicates)
-    console.log(this.predicateIndex)
-    this.slidePredicate(this.currPredicates.children(), this.predicateIndex);
+    this.slidePredicate();
     // var verb = this.verbs[this.verbIndex];
     // var predicates = this.content[verb];
     // this.verb.text(verb);
@@ -71,18 +78,12 @@
   }
 
   $.TextSlider.prototype.slidePredicate = function(group, index) {
-    if (this.transitioning) {
-      return;
-    }
-    this.transitioning = true;
     
-    var $oldItem = group.eq(index);
-    // var $oldItem = this.currPredicates.children().eq(this.predicateIndex);
-    // if (group === this.verbs) {
-    // } else {
-      index = this.incrementPredicate();
-    // }
-    var $newItem = group.eq(index);
+    var $oldItem = this.$predicates.children().eq(this.predicateIndex);
+    if (this.incrementPredicate()) {
+
+    }
+    var $newItem = this.$predicates.children().eq(this.predicateIndex);
 
     $newItem.addClass('bottom active');
     $oldItem.one("transitionend", (function() {
@@ -98,15 +99,13 @@
   }
 
   $.TextSlider.prototype.incrementPredicate = function() {
-    debugger
     this.predicateIndex++;
-    if (this.predicateIndex >= this.currPredicates.children().length) {
+    if (this.predicateIndex >= this.$predicates.children().length) {
       // this.verbIndex = (this.verbs.length + this.verbIndex + 1) % this.verbs.length;
-      this.incrementVerb();
-      this.findPredicates();
+      // this.incrementVerb();
       this.predicateIndex = 0;
     }
-    return this.predicateIndex;
+    return this.predicateIndex === 0;
   }
 
   $.TextSlider.prototype.incrementVerb = function() {
