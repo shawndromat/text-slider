@@ -1,49 +1,47 @@
 .text-slider {
   display: block;
   overflow: hidden;
-  /* position: relative; */
-  height: 60px;
+  position: relative;
+  height: 40px;
 }
 
 .text-slider > div {
   display: inline-block;
-  /* padding: 10px; */
-  /* position: relative; */
+  position: relative;
   vertical-align: top;
 }
 
 .text-slider .verb {
-  text-align: right;
+  width: 150px;
+}
+
+.text-slider .verb p {
+  right: 0;
+}
+
+.text-slider .content {
+  width: 400px;
 }
 
 .text-slider > div > p {
   padding: 5px;
+  position: absolute;
+  top: 0%;
+  transition: top 1s ease-in-out, bottom 1s ease-in-out;
 }
 
-.text-slider > div.content {
+.text-slider > div.content:not(.active) {
   display: none;
-}
-
-.text-slider > div.content.active {
-  display: inline-block;
 }
 
 .text-slider > div > p:not(.active) {
   display: none;
 }
-.text-slider  p {
-  /* position: relative; */
-}
-
-.text-slider .active {
-  /* top: 0%; */
-  /* position: relative; */
-}
 
 .text-slider p.top {
-  bottom: 100%;
+  top: -60;
 }
 
 .text-slider p.bottom {
-  bottom: -100%;
+  top: 60;
 }
