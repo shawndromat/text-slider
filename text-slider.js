@@ -1,13 +1,15 @@
 (function($) {
   $.TextSlider = function(el, options) {
     this.$el = $(el);
-    this.subjectText = options.base;
-    this.content = options.text;
-    this.populate();
-    this.run();
     this.verbs = this.$el.find('.verb').children();
+    this.setUp();
+    // this.run();
     this.verbIndex = 0;
     this.predicateIndex = 0;
+  }
+
+  $.TextSlider.prototype.setUp = function() {
+    this.verbs.first().addClass('active');
   }
 
   $.TextSlider.prototype.getVerbs = function() {
@@ -33,6 +35,7 @@
   }
 
   $.TextSlider.prototype.tick = function() {
+    this.slidePredicate();
     var verb = this.verbs[this.verbIndex];
     var predicates = this.content[verb];
     this.verb.text(verb);
@@ -44,10 +47,8 @@
     }
   }
 
-  $.TextSlider.prototype.runVerb = function(predicates) {
-    this.predicate.text(predicates[0]);
-    for(var i = 1; i < predicates.length; i++) {
-    }
+  $.TextSlider.prototype.slidePredicate = function() {
+    var $oldItem = 
   }
 
   $.fn.textSlider = function(options) {

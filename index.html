@@ -8,24 +8,37 @@
     
   </head>
   <body>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
     <div class="text-slider">
-      <div class="subject"><p>I</p></div>
+      <div class="subject"><p class="active">I</p></div>
       <div class="verb">
-        <p>am</p>
-        <p>love</p>
-        <p>create with</p>
+        <p data-target="#am">am</p>
+        <p data-target="#love">love</p>
+        <p data-target="#create">create with</p>
+      </div>
+      <div class="content" id="am">
+        <p>a web developer</p>
+        <p>a maker</p>
+      </div>
+      <div class="content" id="love">
+        <p>clean code</p>
+        <p>problem solving</p>
+      </div>
+      <div class="content" id="create">
+        <p>ruby</p>
+        <p>javascript</p>
+        <p>rails</p>
+        <p>backbone</p>
+        <p>angular</p>
       </div>
     </div>
     <script type="text/javascript" charset="utf-8">
       $(function() {
-          $('.text-slider').textSlider({
-              base: "I",
-              text: {
-              "am": ["a web developer", "a crafter"],
-              "love": ["clean, thoughtful code", "problem solving"],
-              "create with": ["ruby", "rails", "javascript", "backbone", "angular"]
-              }
-            });
+          $('.text-slider').textSlider();
       });
     </script>
   </body>
