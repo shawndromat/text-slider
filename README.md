@@ -1,3 +1,5 @@
 # jquery.text-slider
 
-An animated text slider/carousel.
+An animated text slider jQuery plugin.
+
+
