@@ -4,26 +4,27 @@
     <link rel="stylesheet" href="style.css" type="text/css" />
     <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
     <script src="text-slider.js" type="text/javascript" charset="utf-8"></script>
+    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <title>Text Slider</title>
     
   </head>
   <body>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
     <div class="text-slider">
-      <div class="subject"><p>I</p></div>
-      <div class="verb">
-        <p>am</p>
-        <p>love</p>
-        <p>create with</p>
-      </div>
-    </div>
+      <div class="verb"></div>
+      <div class="predicate"></div>
+    </div><!-- text-slider -->
     <script type="text/javascript" charset="utf-8">
       $(function() {
           $('.text-slider').textSlider({
-              base: "I",
-              text: {
-              "am": ["a web developer", "a crafter"],
-              "love": ["clean, thoughtful code", "problem solving"],
-              "create with": ["ruby", "rails", "javascript", "backbone", "angular"]
+              content: {
+              "I am": ["Shawna Mattison", "a web developer", "a maker"],
+              "I love": ["clean code", "problem solving"],
+              "I create with": ["ruby", "javascript", "rails", "backbone", "angular"]
               }
             });
       });

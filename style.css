@@ -1,4 +1,47 @@
-.text-slider div {
+* {
+  font-family: 'Lato', sans-serif;
+}
+
+.text-slider {
+  display: block;
+  overflow: hidden;
+  position: relative;
+  height: 40px;
+}
+
+.text-slider > div {
   display: inline-block;
+  position: relative;
+  vertical-align: top;
+}
+
+.text-slider .verb {
+  width: 150px;
+}
+
+.text-slider .verb p {
+  right: 0;
+}
+
+.text-slider .predicate {
+  width: 400px;
+}
+
+.text-slider > div > p {
   padding: 5px;
+  position: absolute;
+  top: 0%;
+  transition: top 1s ease-in-out, bottom 5s ease-in-out;
+}
+
+.text-slider > div > p:not(.active) {
+  display: none;
+}
+
+.text-slider p.top {
+  top: -60;
+}
+
+.text-slider p.bottom {
+  top: 60;
 }
